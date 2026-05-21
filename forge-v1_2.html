@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Forge">
+<meta name="theme-color" content="#fafafa">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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">
+<link rel="icon" type="image/png" sizes="512x512" href="data:image/png;base64,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">
+<link rel="manifest" href="data:application/manifest+json;charset=utf-8,{"name":"Forge","short_name":"Forge","description":"Strength%20training%20tracker","start_url":"./","scope":"./","display":"standalone","orientation":"portrait","background_color":"%23fafafa","theme_color":"%23fafafa","icons":[{"src":"data:image/png;base64,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","sizes":"180x180","type":"image/png","purpose":"any"},{"src":"data:image/png;base64,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","sizes":"512x512","type":"image/png","purpose":"any%20maskable"}]}">
+<title>Forge</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:#fafafa;--bg2:#ffffff;--bg3:#f3f4f6;
+  --line:#e5e7eb;--line2:#d1d5db;
+  --t1:#0a0a0a;--t2:#525252;--t3:#737373;--t4:#a3a3a3;
+  --amber:#ea580c;--amber-d:rgba(234,88,12,0.08);
+  --green:#16a34a;--yellow:#ca8a04;--red:#dc2626;--blue:#2563eb;
+  --safe-t:env(safe-area-inset-top,0px);--safe-b:env(safe-area-inset-bottom,20px);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{height:100%;background:var(--bg);color:var(--t1);font-family:'DM Mono',monospace;font-size:14px;overscroll-behavior:none;margin:0;-webkit-font-smoothing:antialiased;}
+body{padding-top:var(--safe-t);padding-bottom:calc(70px + var(--safe-b));}
+#app{max-width:430px;margin:0 auto;}
+input{font-family:'DM Mono',monospace;color:var(--t1);}
+
+/* HEADER */
+.header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 8px;}
+.brand{font-family:'Instrument Serif',serif;font-size:26px;letter-spacing:0.02em;color:var(--t1);}
+.brand-dot{color:var(--amber);}
+.date-line{font-size:10px;color:var(--t3);letter-spacing:0.08em;text-transform:uppercase;margin-top:2px;}
+.gear-btn{width:36px;height:36px;border-radius:10px;background:var(--bg2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--t2);cursor:pointer;}
+
+/* TABS */
+#nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:rgba(255,255,255,0.96);border-top:1px solid var(--line);display:flex;padding-bottom:var(--safe-b);z-index:100;backdrop-filter:blur(16px);box-shadow:0 -2px 12px rgba(0,0,0,0.04);}
+.nb{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 4px 4px;border:none;background:none;color:var(--t4);font-family:'DM Mono',monospace;cursor:pointer;font-size:10px;letter-spacing:0.08em;}
+.nb.active{color:var(--t1);}
+.nb-icon{font-size:18px;line-height:1;}
+
+/* CARDS */
+.card{margin:0 16px 10px;background:var(--bg2);border:1px solid var(--line);border-radius:14px;overflow:hidden;}
+.card-pad{padding:14px 16px;}
+.card-title{font-family:'Instrument Serif',serif;font-size:20px;color:var(--t1);margin-bottom:4px;}
+.card-sub{font-size:11px;color:var(--t3);letter-spacing:0.06em;text-transform:uppercase;}
+
+/* TODAY: SESSION CARD */
+.session-card{margin:0 16px 12px;background:var(--bg2);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.03);}
+.session-top{padding:20px 18px 14px;}
+.session-lbl{font-size:9px;letter-spacing:0.14em;color:var(--t3);text-transform:uppercase;margin-bottom:6px;}
+.session-name{font-family:'Instrument Serif',serif;font-size:40px;color:var(--t1);line-height:1;letter-spacing:-0.02em;}
+.session-meta{font-size:12px;color:var(--t2);margin-top:8px;line-height:1.5;}
+.session-cta{display:block;width:calc(100% - 36px);margin:0 18px 18px;padding:16px;background:var(--amber);color:#fff;border:none;border-radius:12px;font-family:'DM Mono',monospace;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;font-weight:500;}
+.session-cta:active{background:#c2410c;}
+.session-cta.muted{background:var(--bg3);color:var(--t3);}
+.session-secondary{display:block;text-align:center;margin:0 18px 14px;font-size:11px;color:var(--t3);text-decoration:underline;cursor:pointer;letter-spacing:0.04em;}
+
+/* STREAK + WEIGHT */
+.row-2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 16px 10px;}
+.stat-card{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center;}
+.stat-num{font-size:36px;font-weight:300;color:var(--t1);line-height:1;letter-spacing:-0.02em;font-family:'Instrument Serif',serif;}
+.stat-num.amber{color:var(--amber);}
+.stat-lbl{font-size:9px;letter-spacing:0.12em;color:var(--t3);text-transform:uppercase;margin-top:6px;}
+
+/* FEEL CHECK */
+.feel-card{margin:0 16px 10px;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:14px;}
+.feel-lbl{font-size:9px;letter-spacing:0.12em;color:var(--t3);text-transform:uppercase;margin-bottom:10px;}
+.feel-opts{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;}
+.feel-btn{padding:12px 4px;border:1px solid var(--line);background:var(--bg2);border-radius:10px;cursor:pointer;text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:var(--t3);transition:all 0.15s;}
+.feel-btn.active{background:var(--amber-d);border-color:var(--amber);color:var(--amber);}
+.feel-emoji{font-size:22px;display:block;margin-bottom:2px;}
+
+/* INFO CARD — muscle building */
+.info-card{margin:0 16px 10px;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:16px;}
+.info-title{font-family:'Instrument Serif',serif;font-size:18px;color:var(--t1);margin-bottom:8px;}
+.info-body{font-size:12px;color:var(--t2);line-height:1.7;}
+.info-body strong{color:var(--amber);font-weight:500;}
+.info-numbered{display:flex;gap:10px;align-items:flex-start;margin:8px 0;}
+.info-num{font-family:'Instrument Serif',serif;font-size:22px;color:var(--amber);line-height:1;flex-shrink:0;width:24px;}
+.info-text{flex:1;font-size:12px;color:var(--t2);line-height:1.5;}
+.info-text b{color:var(--t1);font-weight:500;}
+
+/* TRAIN: DAY PICKER */
+.day-picker{display:flex;gap:0;margin:0 16px 12px;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:4px;}
+.dp-btn{flex:1;padding:10px 4px;text-align:center;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.08em;color:var(--t3);cursor:pointer;border-radius:8px;border:none;background:none;text-transform:uppercase;}
+.dp-btn.active{background:var(--t1);color:#fff;font-weight:500;}
+
+/* EXERCISE ITEMS */
+.ex-item{margin:0 16px 8px;background:var(--bg2);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+.ex-item.done{border-color:var(--green);background:rgba(22,163,74,0.03);}
+.ex-header{display:flex;align-items:center;padding:12px 14px;cursor:pointer;gap:10px;}
+.ex-check{width:24px;height:24px;border-radius:6px;border:1px solid var(--line2);background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--t3);flex-shrink:0;transition:all 0.15s;}
+.ex-item.done .ex-check{background:var(--green);border-color:var(--green);color:#fff;}
+.ex-body{flex:1;min-width:0;}
+.ex-name{font-size:14px;color:var(--t1);line-height:1.2;}
+.ex-meta{font-size:10px;color:var(--t3);margin-top:3px;letter-spacing:0.04em;}
+.ex-kg-badge{font-size:12px;color:var(--t2);flex-shrink:0;}
+.ex-expand-icon{color:var(--t4);font-size:9px;transition:transform 0.2s;flex-shrink:0;}
+.ex-item.open .ex-expand-icon{transform:rotate(180deg);}
+
+/* PROGRESSION HINT */
+.prog-hint{padding:10px 14px;background:var(--bg);border-top:1px solid var(--line);font-size:11px;color:var(--t2);line-height:1.5;}
+.prog-hint.up{background:var(--amber-d);color:var(--amber);}
+
+/* SET LOGGER */
+.set-logger{display:none;background:var(--bg);border-top:1px solid var(--line);}
+.ex-item.open .set-logger{display:block;}
+.set-logger-header{display:flex;padding:8px 14px 4px;gap:6px;}
+.slh{flex:1;font-size:9px;letter-spacing:0.1em;color:var(--t3);text-transform:uppercase;text-align:center;}
+.set-row-log{display:flex;align-items:center;padding:5px 14px;gap:6px;}
+.sr-num{width:22px;font-size:11px;color:var(--t3);text-align:center;flex:none;}
+.sr-input{flex:1;background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:8px 6px;text-align:center;font-family:'DM Mono',monospace;font-size:15px;color:var(--t1);outline:none;-webkit-appearance:none;width:100%;}
+.sr-done{width:30px;height:30px;border-radius:8px;border:1px solid var(--line2);background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:13px;cursor:pointer;color:var(--t3);flex-shrink:0;transition:all 0.2s;}
+.sr-done.done{background:var(--green);border-color:var(--green);color:#fff;}
+.sl-footer{display:flex;justify-content:space-between;padding:8px 14px 10px;border-top:1px solid var(--line);}
+.sl-add,.sl-mark-all{font-size:10px;color:var(--t3);cursor:pointer;letter-spacing:0.06em;text-transform:uppercase;padding:6px 10px;border-radius:6px;background:var(--bg2);border:1px solid var(--line);}
+.sl-mark-all{color:var(--green);border-color:rgba(22,163,74,0.3);}
+
+/* TECH NOTE */
+.tech-note{padding:10px 14px;background:var(--bg);border-top:1px solid var(--line);font-size:11px;color:var(--t3);line-height:1.5;font-style:italic;}
+
+/* PROGRESS BAR */
+.prog-row{display:flex;align-items:center;gap:10px;margin:8px 16px 10px;}
+.prog-bg{flex:1;height:3px;background:var(--line);border-radius:2px;}
+.prog-fill{height:3px;border-radius:2px;background:var(--amber);transition:width 0.4s ease;}
+.prog-txt{font-size:10px;color:var(--t3);letter-spacing:0.06em;}
+
+/* SAVE BUTTON */
+.save-btn{margin:6px 16px 12px;padding:14px;background:var(--green);color:#fff;border:none;border-radius:12px;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.06em;cursor:pointer;width:calc(100% - 32px);display:none;text-transform:uppercase;font-weight:500;}
+.save-btn.visible{display:block;}
+
+/* PROGRESS TAB */
+.prog-tabs{display:flex;gap:0;margin:0 16px 14px;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:4px;}
+.prog-tab{flex:1;padding:10px 4px;text-align:center;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.06em;color:var(--t3);cursor:pointer;border-radius:8px;border:none;background:none;}
+.prog-tab.active{background:var(--t1);color:#fff;font-weight:500;}
+
+/* STRENGTH CARDS */
+.ex-prog-card{margin:0 16px 10px;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:14px 16px;}
+.ep-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;}
+.ep-name{font-size:14px;color:var(--t1);}
+.ep-session{font-size:9px;color:var(--t3);letter-spacing:0.08em;margin-top:2px;text-transform:uppercase;}
+.ep-pr{font-size:10px;color:var(--amber);background:var(--amber-d);padding:3px 8px;border-radius:6px;letter-spacing:0.06em;border:1px solid rgba(234,88,12,0.25);}
+.ep-chart{margin:8px 0;height:70px;}
+.ep-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px;}
+.ep-stat{text-align:center;}
+.ep-sv{font-size:18px;color:var(--t1);line-height:1;font-family:'Instrument Serif',serif;}
+.ep-sl{font-size:8px;color:var(--t3);letter-spacing:0.08em;margin-top:3px;text-transform:uppercase;}
+
+/* HISTORY */
+.hist-card{margin:0 16px 8px;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;}
+.hc-top{display:flex;justify-content:space-between;align-items:center;}
+.hc-date{font-size:11px;color:var(--t2);letter-spacing:0.06em;}
+.hc-day-tag{font-size:9px;background:var(--bg3);padding:3px 8px;border-radius:5px;color:var(--t2);letter-spacing:0.08em;text-transform:uppercase;}
+.hc-day-tag.push{color:var(--blue);background:rgba(37,99,235,0.08);}
+.hc-day-tag.pull{color:#7c3aed;background:rgba(124,58,237,0.08);}
+.hc-day-tag.legs{color:var(--green);background:rgba(22,163,74,0.08);}
+.hc-day-tag.core{color:var(--yellow);background:rgba(202,138,4,0.08);}
+.hc-ex-row{display:flex;justify-content:space-between;font-size:11px;color:var(--t3);padding:3px 0;}
+.hc-ex-name{color:var(--t2);}
+.hc-ex-data{color:var(--t3);}
+
+/* BODY */
+.body-card{margin:0 16px 10px;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:14px 16px;}
+.bw-input-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.bw-input{flex:1;background:var(--bg3);border:1px solid var(--line);border-radius:10px;padding:11px 12px;font-family:'DM Mono',monospace;font-size:18px;color:var(--t1);outline:none;text-align:center;-webkit-appearance:none;}
+.bw-save{padding:11px 16px;background:var(--t1);color:#fff;border:none;border-radius:10px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.06em;cursor:pointer;text-transform:uppercase;}
+
+/* SETTINGS */
+#settings-modal{position:fixed;inset:0;background:rgba(0,0,0,0.40);z-index:200;display:none;flex-direction:column;justify-content:flex-end;}
+#settings-modal.open{display:flex;}
+.settings-sheet{background:var(--bg2);border-radius:20px 20px 0 0;padding:20px 20px calc(var(--safe-b) + 20px);width:100%;max-width:430px;margin:0 auto;}
+.settings-handle{width:36px;height:4px;background:var(--line2);border-radius:2px;margin:0 auto 16px;}
+.s-row{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line);cursor:pointer;}
+.s-row:last-of-type{border-bottom:none;}
+.s-label{font-size:13px;color:var(--t1);}
+.s-sub{font-size:10px;color:var(--t3);margin-top:2px;}
+.s-chev{font-size:14px;color:var(--t3);}
+
+/* TOAST */
+#toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--t1);color:#fff;padding:11px 18px;border-radius:24px;font-size:12px;opacity:0;transition:all 0.3s;z-index:400;pointer-events:none;box-shadow:0 4px 12px rgba(0,0,0,0.15);}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* TAB CONTENT */
+.tab-content{display:none;}
+.tab-content.active{display:block;}
+
+/* EMPTY STATE */
+.empty{padding:40px 16px;text-align:center;color:var(--t3);font-size:12px;line-height:1.6;}
+.empty-title{font-family:'Instrument Serif',serif;font-size:22px;color:var(--t2);margin-bottom:6px;}
+
+/* VERSION */
+.version{text-align:center;font-size:9px;color:var(--t4);letter-spacing:0.1em;margin:24px 16px 10px;text-transform:uppercase;}
+
+/* ═══════════════════════════════════ */
+/* TRAINING MODE OVERLAY               */
+/* ═══════════════════════════════════ */
+#tm-overlay{position:fixed;inset:0;background:var(--bg);z-index:250;display:none;flex-direction:column;}
+#tm-overlay.open{display:flex;}
+.tm-top{padding:calc(var(--safe-t) + 14px) 16px 0;background:var(--bg);}
+.tm-header-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.tm-step-indicator{font-size:11px;color:var(--t3);letter-spacing:0.1em;text-transform:uppercase;}
+.tm-close-btn{width:36px;height:36px;border:none;background:var(--bg3);border-radius:10px;font-size:18px;color:var(--t2);cursor:pointer;}
+.tm-progress-track{height:3px;background:var(--line);border-radius:2px;margin-bottom:14px;}
+.tm-progress-fill{height:3px;background:var(--amber);border-radius:2px;transition:width 0.4s ease;}
+
+.tm-content{flex:1;overflow-y:auto;padding:0 16px 20px;}
+.tm-ex-name{font-family:'Instrument Serif',serif;font-size:38px;line-height:1.1;margin-bottom:6px;letter-spacing:-0.02em;}
+.tm-ex-meta{font-size:11px;color:var(--t3);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;}
+.tm-tech-card{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:16px;font-size:12px;line-height:1.6;color:var(--t2);}
+
+.tm-set-card{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:10px;}
+.tm-set-card.done{border-color:var(--green);background:rgba(22,163,74,0.03);}
+.tm-set-num{font-size:9px;letter-spacing:0.14em;color:var(--t3);text-transform:uppercase;margin-bottom:10px;}
+.tm-set-inputs{display:flex;gap:10px;margin-bottom:10px;}
+.tm-set-input-group{flex:1;}
+.tm-set-label{font-size:9px;color:var(--t3);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:5px;}
+.tm-set-input{width:100%;background:var(--bg3);border:1px solid var(--line);border-radius:8px;padding:12px;text-align:center;font-family:'DM Mono',monospace;font-size:22px;color:var(--t1);outline:none;font-weight:500;-webkit-appearance:none;}
+.tm-set-done-btn{width:100%;padding:13px;background:var(--bg3);border:1px solid var(--line);border-radius:10px;font-family:'DM Mono',monospace;font-size:11px;color:var(--t2);letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;}
+.tm-set-done-btn.done{background:var(--green);color:#fff;border-color:var(--green);}
+
+.tm-rest-timer{background:var(--amber-d);border:1px solid var(--amber);border-radius:14px;padding:22px;text-align:center;margin-bottom:14px;}
+.tm-rest-countdown{font-family:'Instrument Serif',serif;font-size:54px;color:var(--amber);line-height:1;}
+.tm-rest-label{font-size:10px;letter-spacing:0.14em;color:var(--amber);text-transform:uppercase;margin-top:6px;}
+.tm-rest-skip{font-size:11px;color:var(--amber);margin-top:14px;padding:8px 14px;border:1px solid var(--amber);background:none;border-radius:8px;cursor:pointer;font-family:'DM Mono',monospace;letter-spacing:0.06em;text-transform:uppercase;}
+
+.tm-bottom{padding:14px 16px calc(var(--safe-b) + 14px);border-top:1px solid var(--line);background:var(--bg);display:flex;gap:10px;}
+.tm-nav-btn{flex:1;padding:14px;border:1px solid var(--line2);background:var(--bg2);border-radius:12px;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--t2);cursor:pointer;font-weight:500;}
+.tm-nav-btn.primary{background:var(--amber);color:#fff;border-color:var(--amber);}
+.tm-nav-btn:disabled{visibility:hidden;}
+
+/* Warmup/cooldown */
+.tm-wu-item{display:flex;align-items:flex-start;gap:14px;padding:14px;background:var(--bg2);border:1px solid var(--line);border-radius:12px;margin-bottom:8px;}
+.tm-wu-num{font-family:'Instrument Serif',serif;font-size:30px;color:var(--amber);line-height:1;flex-shrink:0;min-width:34px;}
+.tm-wu-body{flex:1;}
+.tm-wu-title{font-size:14px;color:var(--t1);margin-bottom:3px;font-weight:500;}
+.tm-wu-desc{font-size:12px;color:var(--t3);line-height:1.5;}
+.tm-wu-dur{font-size:10px;color:var(--amber);background:var(--amber-d);padding:4px 8px;border-radius:6px;letter-spacing:0.06em;flex-shrink:0;}
+
+/* Summary */
+.tm-summary-stat{display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--line);}
+.tm-summary-stat:last-child{border-bottom:none;}
+.tm-summary-lbl{font-size:11px;color:var(--t3);letter-spacing:0.06em;text-transform:uppercase;}
+.tm-summary-val{font-size:20px;color:var(--t1);font-family:'Instrument Serif',serif;}
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <div class="brand">Forge<span class="brand-dot">.</span></div>
+      <div class="date-line" id="today-date">—</div>
+    </div>
+    <div class="gear-btn" onclick="openSettings()">⚙</div>
+  </div>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- TAB: TODAY                          -->
+  <!-- ═══════════════════════════════════ -->
+  <div class="tab-content active" id="tab-today">
+
+    <!-- SESSION CARD -->
+    <div class="session-card">
+      <div class="session-top">
+        <div class="session-lbl">Vandaag</div>
+        <div class="session-name" id="td-session-name">—</div>
+        <div class="session-meta" id="td-session-meta">—</div>
+      </div>
+      <button class="session-cta" id="td-start-btn" onclick="tmStart()">Start training →</button>
+      <div class="session-secondary" onclick="goToTrainTab()">of bekijk handmatig in Train ›</div>
+    </div>
+
+    <!-- STREAK + TOTAL -->
+    <div class="row-2">
+      <div class="stat-card">
+        <div class="stat-num" id="td-streak">0</div>
+        <div class="stat-lbl">Streak (dagen)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num amber" id="td-total">0</div>
+        <div class="stat-lbl">Sessies totaal</div>
+      </div>
+    </div>
+
+    <!-- FEEL CHECK -->
+    <div class="feel-card">
+      <div class="feel-lbl">Hoe voel je je vandaag?</div>
+      <div class="feel-opts">
+        <div class="feel-btn" data-feel="1" onclick="setFeel(1)"><span class="feel-emoji">😩</span>Moe</div>
+        <div class="feel-btn" data-feel="2" onclick="setFeel(2)"><span class="feel-emoji">😐</span>OK</div>
+        <div class="feel-btn" data-feel="3" onclick="setFeel(3)"><span class="feel-emoji">💪</span>Strong</div>
+      </div>
+    </div>
+
+    <!-- INFO CARD: SPIEROPBOUW BASIS -->
+    <div class="info-card">
+      <div class="info-title">De basis van spieropbouw</div>
+      <div class="info-body">
+        Spieren groeien door drie dingen tegelijk:
+      </div>
+      <div class="info-numbered">
+        <div class="info-num">1</div>
+        <div class="info-text"><b>Training</b> — elke week iets meer dan vorige week. Beetje meer gewicht, beetje meer reps, of strakkere techniek.</div>
+      </div>
+      <div class="info-numbered">
+        <div class="info-num">2</div>
+        <div class="info-text"><b>Voeding</b> — eet normaal en gevarieerd. Genoeg eten, niet skippen. Geen pillen of poeders nodig op jouw leeftijd.</div>
+      </div>
+      <div class="info-numbered">
+        <div class="info-num">3</div>
+        <div class="info-text"><b>Slaap</b> — 9 tot 10 uur per nacht. Daar groeit je spier écht, niet in de gym.</div>
+      </div>
+      <div class="info-body" style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line);">
+        <strong>Vorm boven gewicht.</strong> Slechte techniek geeft blessures en geen groei. Op jouw leeftijd leer je vooral bewegingspatronen die je hele leven meegaan. De gewichten die je nu tilt zijn niet je eindpunt — ze zijn je opleiding.
+      </div>
+    </div>
+
+    <div class="version">FORGE v1.2 · Data lokaal opgeslagen</div>
+  </div>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- TAB: TRAIN                          -->
+  <!-- ═══════════════════════════════════ -->
+  <div class="tab-content" id="tab-train">
+    <div class="day-picker" id="day-picker">
+      <button class="dp-btn" data-day="push" onclick="selectDay('push')">Push</button>
+      <button class="dp-btn" data-day="pull" onclick="selectDay('pull')">Pull</button>
+      <button class="dp-btn" data-day="legs" onclick="selectDay('legs')">Legs</button>
+      <button class="dp-btn" data-day="core" onclick="selectDay('core')">Core</button>
+    </div>
+    <div class="card card-pad">
+      <div class="card-title" id="train-day-title">—</div>
+      <div class="card-sub" id="train-day-sub">—</div>
+    </div>
+    <div class="prog-row">
+      <div class="prog-bg"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+      <div class="prog-txt" id="prog-txt">0/0</div>
+    </div>
+    <div id="ex-list"></div>
+    <button class="save-btn" id="save-btn" onclick="saveSession()">Sessie opslaan ✓</button>
+    <div style="height:20px;"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- TAB: PROGRESS                       -->
+  <!-- ═══════════════════════════════════ -->
+  <div class="tab-content" id="tab-progress">
+    <div class="prog-tabs">
+      <button class="prog-tab active" data-ptab="kracht" onclick="selectProgTab('kracht')">Kracht</button>
+      <button class="prog-tab" data-ptab="lichaam" onclick="selectProgTab('lichaam')">Lichaam</button>
+      <button class="prog-tab" data-ptab="historie" onclick="selectProgTab('historie')">Historie</button>
+    </div>
+    <div id="ptab-kracht" class="ptab-content"></div>
+    <div id="ptab-lichaam" class="ptab-content" style="display:none;"></div>
+    <div id="ptab-historie" class="ptab-content" style="display:none;"></div>
+    <div style="height:20px;"></div>
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <nav id="nav">
+    <button class="nb active" data-tab="today" onclick="selectTab('today')">
+      <div class="nb-icon">●</div>
+      Vandaag
+    </button>
+    <button class="nb" data-tab="train" onclick="selectTab('train')">
+      <div class="nb-icon">⚒</div>
+      Train
+    </button>
+    <button class="nb" data-tab="progress" onclick="selectTab('progress')">
+      <div class="nb-icon">↗</div>
+      Progressie
+    </button>
+  </nav>
+</div>
+
+<!-- ═══════════════════════════════════ -->
+<!-- TRAINING MODE OVERLAY               -->
+<!-- ═══════════════════════════════════ -->
+<div id="tm-overlay">
+  <div class="tm-top">
+    <div class="tm-header-row">
+      <div class="tm-step-indicator" id="tm-step-indicator">—</div>
+      <button class="tm-close-btn" onclick="tmClose()">×</button>
+    </div>
+    <div class="tm-progress-track"><div class="tm-progress-fill" id="tm-progress-fill" style="width:0%"></div></div>
+  </div>
+  <div class="tm-content" id="tm-content"></div>
+  <div class="tm-bottom">
+    <button class="tm-nav-btn" id="tm-prev-btn" onclick="tmPrev()">‹ Vorige</button>
+    <button class="tm-nav-btn primary" id="tm-next-btn" onclick="tmNext()">Volgende ›</button>
+  </div>
+</div>
+
+<!-- SETTINGS -->
+<div id="settings-modal" onclick="if(event.target===this)closeSettings()">
+  <div class="settings-sheet">
+    <div class="settings-handle"></div>
+    <div style="font-family:'Instrument Serif',serif;font-size:22px;margin-bottom:6px;">Settings</div>
+    <div style="font-size:10px;color:var(--t3);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:14px;">Forge v1.2</div>
+
+    <div class="s-row" onclick="exportData()">
+      <div>
+        <div class="s-label">Export naar clipboard</div>
+        <div class="s-sub">Tekst-overzicht, makkelijk te delen</div>
+      </div>
+      <div class="s-chev">›</div>
+    </div>
+
+    <div class="s-row" onclick="backupToFile()">
+      <div>
+        <div class="s-label">Backup naar bestand</div>
+        <div class="s-sub">JSON-download — bewaar op Google Drive</div>
+      </div>
+      <div class="s-chev">›</div>
+    </div>
+
+    <div class="s-row" onclick="document.getElementById('restore-file').click()">
+      <div>
+        <div class="s-label">Backup terugzetten</div>
+        <div class="s-sub">Eerder gemaakt bestand inladen</div>
+      </div>
+      <div class="s-chev">›</div>
+    </div>
+    <input type="file" id="restore-file" accept="application/json" style="display:none;" onchange="restoreFromFile(this)">
+
+    <div class="s-row" onclick="showResetConfirm()">
+      <div>
+        <div class="s-label" style="color:var(--red);">Alle data wissen</div>
+        <div class="s-sub">Reset app naar lege staat</div>
+      </div>
+      <div class="s-chev">›</div>
+    </div>
+
+    <div class="s-row" onclick="closeSettings()">
+      <div>
+        <div class="s-label">Sluiten</div>
+      </div>
+      <div class="s-chev">×</div>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════════
+// STORAGE
+// ═══════════════════════════════════════════
+const DB = {
+  get(k){try{return JSON.parse(localStorage.getItem('forge_'+k));}catch{return null;}},
+  set(k,v){localStorage.setItem('forge_'+k,JSON.stringify(v));},
+  del(k){localStorage.removeItem('forge_'+k);}
+};
+
+// ═══════════════════════════════════════════
+// UTILS
+// ═══════════════════════════════════════════
+const TODAY = new Date().toISOString().slice(0,10);
+function safeDate(s){return new Date((s||'').slice(0,10)+'T00:00:00');}
+function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2400);}
+function roundKg(v){if(v==null||v==='')return v;const n=parseFloat(v);if(isNaN(n))return v;return Math.round(n*2)/2;}
+function fmtKg(v){if(v==null||v==='')return '—';const n=parseFloat(v);if(isNaN(n))return '—';const r=Math.round(n*2)/2;return r%1===0?r.toFixed(0):r.toFixed(1);}
+function nlDate(d){return safeDate(d).toLocaleDateString('nl-NL',{day:'numeric',month:'short'});}
+
+// ═══════════════════════════════════════════
+// EXERCISE DATABASE (24 oefeningen, 6 per dag)
+// ═══════════════════════════════════════════
+const EX_DB = {
+  // PUSH (6)
+  pushup:          {name:'Push-up',                  cat:'push',muscle:'borst',     sets:3,reps:'8-12',  kg:0, bw:true,  note:'Schouderbladen actief, lichaam in één rechte lijn. Niet doorzakken bij de heupen. Vorm > aantal.'},
+  knuckle_pushup:  {name:'Knokkel push-up',          cat:'push',muscle:'borst+grip',sets:3,reps:'5-10',  kg:0, bw:true,  note:'Op een yoga-mat of tapijt — NIET op een harde vloer. Wijsvinger + middelvinger dragen het gewicht. Pols recht boven knokkels. Op jouw leeftijd: alleen zachte ondergrond.'},
+  floor_press:     {name:'Vloer dumbbell press',     cat:'push',muscle:'borst',     sets:3,reps:'8-12',  kg:6, bw:false, note:'Op de rug op de vloer. Bovenarm landt op vloer (geen rek op schouder). Twee dumbbells of één halter.'},
+  diamond_pushup:  {name:'Diamond push-up',          cat:'push',muscle:'triceps',   sets:3,reps:'6-10',  kg:0, bw:true,  note:'Handen onder borstmidden, duimen + wijsvingers vormen een driehoek. Zwaarder dan normale push-up — start eventueel op knieën.'},
+  lateral_raise:   {name:'Lateral raise',            cat:'push',muscle:'schouder',  sets:3,reps:'10-12', kg:3, bw:false, note:'Lichte buiging in elleboog. Hef tot schouderhoogte (niet hoger). Geen swing met romp. Voor V-shape essentieel.'},
+  tricep_pushdown: {name:'Triceps pushdown (cable)', cat:'push',muscle:'triceps',   sets:3,reps:'10-12', kg:8, bw:false, note:'Ellebogen vast aan zij — alleen onderarm beweegt. Cable pulley met touw of rechte stang.'},
+
+  // PULL (6)
+  pullup:          {name:'Pull-up',                  cat:'pull',muscle:'rug',       sets:3,reps:'AMRAP', kg:0, bw:true,  note:'KAN JE NOG GEEN PULL-UP? Begin met negatieven: spring naar de stang en laat jezelf langzaam zakken (3-5 seconden). Doe daar 3 sets van 3-5. Na 4-6 weken proberen: half optrekken. Volledige pull-up komt vanzelf. Log altijd hoeveel je doet — 0 of 1 is een goed startpunt.'},
+  chin_up:         {name:'Chin-up',                  cat:'pull',muscle:'biceps+rug',sets:3,reps:'AMRAP', kg:0, bw:true,  note:'Onderhandse greep, schouderbreedte. Biceps doet meer mee dan bij pull-up — vaak kan je hier 1-2 meer dan pull-ups. Zelfde negatief-progressie als pull-up als je er nog geen kan.'},
+  db_row:          {name:'Dumbbell row',             cat:'pull',muscle:'rug',       sets:3,reps:'8-10',  kg:8, bw:false, note:'Eén knie + hand op bank/stoel. Trek dumbbell tot ribbenkast. Andere kant na zijde-wissel. Reps tellen per zijde.'},
+  db_curl:         {name:'Dumbbell curl',            cat:'pull',muscle:'biceps',    sets:3,reps:'8-12',  kg:5, bw:false, note:'Ellebogen stil tegen romp. Geen schouder mee. Bovenaan kort knijpen. Langzaam laten zakken.'},
+  hammer_curl:     {name:'Hammer curl',              cat:'pull',muscle:'biceps+arm',sets:3,reps:'8-12',  kg:5, bw:false, note:'Hamergreep (duimen omhoog). Pakt brachialis + onderarm. Bouwt dikkere armen én sterkere grip.'},
+  dead_hang:       {name:'Dead hang',                cat:'pull',muscle:'grip',      sets:3,reps:'20-45s',kg:0, bw:true, time:true, note:'Volle hang aan de pull-up bar. Schouders actief (niet hangen in banden). Bouwt greep + lat-stretch. Per set: zo lang mogelijk volhouden.'},
+
+  // LEGS (6)
+  goblet_squat:    {name:'Goblet squat',             cat:'legs',muscle:'quads',     sets:3,reps:'8-12',  kg:8, bw:false, note:'Dumbbell vast bij borst. Heup onder kniediepte. Borst open. Knieën in lijn met tenen (niet naar binnen vallen).'},
+  db_rdl:          {name:'Romanian deadlift',        cat:'legs',muscle:'hamstrings',sets:3,reps:'8-10',  kg:8, bw:false, note:'Lichte knie-buiging (vast). Heup naar achter, dumbbells glijden langs benen omlaag. Rug RECHT, niet gebogen. Voel hamstrings, niet onderrug.'},
+  lunge:           {name:'Wandel-lunge',             cat:'legs',muscle:'quads+glutes',sets:3,reps:'8-10', kg:4, bw:false, note:'Per zijde. Voorste knie boven enkel (niet er voorbij). Achterste knie net boven grond. Recht omhoog drukken, niet vooruit.'},
+  glute_bridge:    {name:'Glute bridge',             cat:'legs',muscle:'glutes',    sets:3,reps:'10-12', kg:8, bw:false, note:'Dumbbell op heup. Knijp glutes bovenaan, 2 seconden vasthouden. Voeten plat op grond, dichtbij kont.'},
+  hyperextension:  {name:'Superman (onderrug)',      cat:'legs',muscle:'onderrug',  sets:3,reps:'10-15', kg:0, bw:true,  note:'Op buik op grond, armen vooruit. Til borst + benen tegelijk. 2 sec hold bovenaan, controle. Onderrug + glutes.'},
+  calf_raise:      {name:'Kuit raise',               cat:'legs',muscle:'kuiten',    sets:3,reps:'12-15', kg:6, bw:false, note:'Op rand van verhoging (treetje) voor extra range. Hak laag, kort stop bovenaan, langzaam zakken.'},
+
+  // CORE + CONDITIONING (6) — optioneel als 4e dag
+  ab_rollout:      {name:'Ab roller (knieën)',       cat:'core',muscle:'buik',      sets:3,reps:'6-10',  kg:0, bw:true,  note:'Knieën als pivot. Rol langzaam uit, trek met onderbuik gecontroleerd terug. Onderrug NIET doorzakken. Later: vanuit staande positie.'},
+  hanging_knee:    {name:'Hangende kniehef',         cat:'core',muscle:'buik',      sets:3,reps:'8-12',  kg:0, bw:true,  note:'Aan pull-up bar. Geen swingen. Knieën tot heuphoogte (later: tot borst, dan toes-to-bar).'},
+  plank:           {name:'Plank',                    cat:'core',muscle:'core',      sets:3,reps:'30-60s',kg:0, bw:true, time:true, note:'Onderarmen op grond. Heupen in lijn met schouders — niet hangen, niet omhoog steken. Voel buik + glutes aanspannen.'},
+  jump_rope:       {name:'Springtouw',               cat:'core',muscle:'conditie',  sets:3,reps:'60-90s',kg:0, bw:true, time:true, note:'Op tenen, lichte voet. Polsen draaien — niet armen. Variaties later: één been, dubbel-onder.'},
+  wrist_curl:      {name:'Wrist curl',               cat:'core',muscle:'onderarm',  sets:3,reps:'10-15', kg:4, bw:false, note:'Onderarmen op knieën, polsen voorbij de rand. Alleen pols beweegt. Palm omhoog. Onderarm-bouwer.'},
+  farmer_carry:    {name:'Farmer carry',             cat:'core',muscle:'grip+traps',sets:3,reps:'30-45s',kg:8, bw:false, time:true, note:'Eén dumbbell per hand. Loop rondjes. Schouders laag, borst hoog. Greep mag niet eerder loslaten dan tijd voorbij.'}
+};
+
+const DAYS = ['push','pull','legs','core'];
+const DAY_LABELS = {push:'Push',pull:'Pull',legs:'Legs',core:'Core'};
+const DAY_SUBS = {
+  push:'Borst, schouders, triceps',
+  pull:'Rug, biceps, grip',
+  legs:'Quads, hamstrings, glutes',
+  core:'Buik, onderarmen, conditie'
+};
+
+// Warm-up & cool-down content
+const WARMUP_MOVES = [
+  {title:'Armcirkels', desc:'Tien voorwaarts, tien achterwaarts. Schouders losmaken.', dur:'30s'},
+  {title:'Heupcirkels', desc:'Handen op heupen, draai bekken tien keer per kant.', dur:'30s'},
+  {title:'Bodyweight squats', desc:'Tien langzame, controle naar diep zitten.', dur:'30s'},
+  {title:'Sprongetjes op tenen', desc:'Lichte voet, dertig seconden. Hartslag iets omhoog.', dur:'30s'}
+];
+
+const COOLDOWN_MOVES = [
+  {title:'Borst-stretch tegen muur', desc:'Arm tegen muur, lichaam wegdraaien. Dertig seconden per kant.', dur:'1min'},
+  {title:'Quad-stretch staand', desc:'Pak voet vast achter rug, knie omlaag. Dertig seconden per been.', dur:'1min'},
+  {title:'Hamstring-stretch zittend', desc:'Been gestrekt, langzaam vooroverbuigen. Dertig seconden per been.', dur:'1min'},
+  {title:'Cat-cow op handen+knieën', desc:'Tien rondjes rug bol-hol. Rust voor onderrug.', dur:'30s'}
+];
+
+// ═══════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════
+let currentTab = 'today';
+let currentDay = null;
+let logData = {};
+let progTab = 'kracht';
+
+// ═══════════════════════════════════════════
+// TAB NAVIGATION
+// ═══════════════════════════════════════════
+function selectTab(tab){
+  currentTab = tab;
+  document.querySelectorAll('.tab-content').forEach(el=>el.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  document.querySelectorAll('.nb').forEach(el=>el.classList.toggle('active',el.dataset.tab===tab));
+  if(tab==='today') buildToday();
+  if(tab==='train') buildTrain();
+  if(tab==='progress') buildProgress();
+}
+function goToTrainTab(){
+  const nextDay = getNextSessionDay();
+  selectTab('train');
+  selectDay(nextDay);
+}
+
+// ═══════════════════════════════════════════
+// SPLIT ROTATION
+// ═══════════════════════════════════════════
+function getNextSessionDay(){
+  const log = DB.get('sessions') || [];
+  if(!log.length) return 'push';
+  const last = log[log.length-1];
+  if(last.date === TODAY) return last.day;
+  // Core is optional — main rotation = push/pull/legs
+  const mainOrder = ['push','pull','legs'];
+  const idx = mainOrder.indexOf(last.day);
+  if(idx === -1) return 'push'; // last was core, restart
+  return mainOrder[(idx+1) % mainOrder.length];
+}
+function isSessionDoneToday(day){
+  return (DB.get('sessions') || []).some(s=>s.date===TODAY && s.day===day);
+}
+
+// ═══════════════════════════════════════════
+// TODAY TAB
+// ═══════════════════════════════════════════
+function buildToday(){
+  document.getElementById('today-date').textContent = 
+    new Date().toLocaleDateString('nl-NL',{weekday:'long',day:'numeric',month:'long'});
+  const nextDay = getNextSessionDay();
+  const isDone = isSessionDoneToday(nextDay);
+  document.getElementById('td-session-name').textContent = DAY_LABELS[nextDay];
+  document.getElementById('td-session-meta').textContent = DAY_SUBS[nextDay];
+  const btn = document.getElementById('td-start-btn');
+  if(isDone){
+    btn.textContent = 'Sessie van vandaag voltooid ✓';
+    btn.classList.add('muted');
+  }else{
+    btn.textContent = 'Start training →';
+    btn.classList.remove('muted');
+  }
+  document.getElementById('td-streak').textContent = calcStreak();
+  document.getElementById('td-total').textContent = (DB.get('sessions')||[]).length;
+  const feels = DB.get('feels') || {};
+  const todayFeel = feels[TODAY];
+  document.querySelectorAll('.feel-btn').forEach(b=>{
+    b.classList.toggle('active', parseInt(b.dataset.feel)===todayFeel);
+  });
+}
+function setFeel(level){
+  const feels = DB.get('feels') || {};
+  feels[TODAY] = level;
+  DB.set('feels', feels);
+  document.querySelectorAll('.feel-btn').forEach(b=>{
+    b.classList.toggle('active', parseInt(b.dataset.feel)===level);
+  });
+  if(level===1) toast('Moe? Training wordt automatisch -15% gewicht.');
+  else if(level===3) toast('Sterke dag! Goede dag voor een PR-poging.');
+}
+function calcStreak(){
+  const log = DB.get('sessions') || [];
+  if(!log.length) return 0;
+  const dates = [...new Set(log.map(s=>s.date))].sort().reverse();
+  let streak = 0;
+  let cursor = new Date();
+  for(let i=0;i<dates.length;i++){
+    const sd = safeDate(dates[i]);
+    const diff = Math.floor((cursor - sd) / 86400000);
+    if(diff <= 2){
+      streak++;
+      cursor = new Date(sd.getTime() - 86400000);
+    }else break;
+  }
+  return streak;
+}
+
+// ═══════════════════════════════════════════
+// TRAIN TAB (handmatig loggen, fallback)
+// ═══════════════════════════════════════════
+function selectDay(day){
+  currentDay = day;
+  document.querySelectorAll('.dp-btn').forEach(b=>b.classList.toggle('active', b.dataset.day===day));
+  buildTrain();
+}
+function buildTrain(){
+  if(!currentDay){
+    currentDay = getNextSessionDay();
+    document.querySelectorAll('.dp-btn').forEach(b=>b.classList.toggle('active', b.dataset.day===currentDay));
+  }
+  document.getElementById('train-day-title').textContent = DAY_LABELS[currentDay];
+  document.getElementById('train-day-sub').textContent = DAY_SUBS[currentDay];
+  const exIds = Object.keys(EX_DB).filter(id => EX_DB[id].cat === currentDay);
+  const prev = DB.get('prev_weights') || {};
+  const todayChecks = DB.get('today_checks_'+TODAY+'_'+currentDay) || {};
+  const feels = DB.get('feels') || {};
+  const tired = feels[TODAY] === 1;
+
+  const listEl = document.getElementById('ex-list');
+  listEl.innerHTML = '';
+  logData = {};
+
+  exIds.forEach(exId => {
+    const ex = EX_DB[exId];
+    let kg = prev[exId] != null ? prev[exId] : ex.kg;
+    if(tired && !ex.bw) kg = roundKg(Math.max(ex.kg * 0.85, kg * 0.85));
+    logData[exId] = Array.from({length:ex.sets}, () => ({
+      kg, reps: parseInt(ex.reps)||10, done: false
+    }));
+    const isDone = todayChecks[exId] || false;
+    const hint = getProgressionHint(exId);
+    const item = document.createElement('div');
+    item.className = 'ex-item' + (isDone ? ' done' : '');
+    item.id = 'ex-' + exId;
+    item.innerHTML = `
+      <div class="ex-header" onclick="toggleEx('${exId}')">
+        <div class="ex-check" id="ec-${exId}">${isDone ? '✓' : ''}</div>
+        <div class="ex-body">
+          <div class="ex-name">${ex.name}</div>
+          <div class="ex-meta">${ex.sets}×${ex.reps}${ex.time?' (tijd)':''} · ${ex.muscle}</div>
+        </div>
+        <div class="ex-kg-badge">${ex.bw ? 'BW' : fmtKg(kg)+' kg'}</div>
+        <div class="ex-expand-icon">▼</div>
+      </div>
+      ${hint ? `<div class="prog-hint ${hint.type}">${hint.text}</div>` : ''}
+      <div class="tech-note">${ex.note}</div>
+      <div class="set-logger" id="sl-${exId}">
+        <div class="set-logger-header">
+          <div class="slh" style="width:22px;flex:none;"></div>
+          <div class="slh">${ex.time?'sec':(ex.bw?'BW':'kg')}</div>
+          <div class="slh">reps</div>
+          <div class="slh" style="width:30px;flex:none;"></div>
+        </div>
+        <div id="sets-${exId}">
+          ${Array.from({length:ex.sets},(_,i)=>buildSetRowHtml(exId,i,kg,parseInt(ex.reps)||10,ex.bw,ex.time)).join('')}
+        </div>
+        <div class="sl-footer">
+          <div class="sl-add" onclick="addSetRow('${exId}')">+ Set</div>
+          <div class="sl-mark-all" onclick="markAllDone('${exId}')">Alle ✓</div>
+        </div>
+      </div>
+    `;
+    listEl.appendChild(item);
+  });
+  updateProgress();
+  document.getElementById('save-btn').classList.toggle('visible', Object.keys(todayChecks).length > 0);
+}
+function buildSetRowHtml(exId, idx, kg, reps, bw, time){
+  return `<div class="set-row-log" id="sr-${exId}-${idx}">
+    <div class="sr-num">${idx+1}</div>
+    <div style="flex:1"><input class="sr-input" type="number" step="0.5" value="${bw?'':fmtKg(kg)}" placeholder="${bw?'BW':''}" id="kg-${exId}-${idx}" onchange="updateSet('${exId}',${idx},'kg',this.value)" ${bw?'style="opacity:0.4"':''}></div>
+    <div style="flex:1"><input class="sr-input" type="number" value="${reps}" id="reps-${exId}-${idx}" onchange="updateSet('${exId}',${idx},'reps',this.value)"></div>
+    <div class="sr-done" id="sd-${exId}-${idx}" onclick="doneSet('${exId}',${idx})">—</div>
+  </div>`;
+}
+function toggleEx(id){document.getElementById('ex-'+id).classList.toggle('open');}
+function updateSet(exId, idx, field, val){
+  if(!logData[exId]) return;
+  logData[exId][idx][field] = parseFloat(val) || 0;
+}
+function doneSet(exId, idx){
+  if(!logData[exId]) return;
+  logData[exId][idx].done = !logData[exId][idx].done;
+  const btn = document.getElementById('sd-'+exId+'-'+idx);
+  btn.classList.toggle('done');
+  btn.textContent = logData[exId][idx].done ? '✓' : '—';
+  checkExerciseComplete(exId);
+}
+function markAllDone(exId){
+  if(!logData[exId]) return;
+  logData[exId].forEach((s,i)=>{
+    s.done = true;
+    const b = document.getElementById('sd-'+exId+'-'+i);
+    if(b){b.classList.add('done'); b.textContent='✓';}
+  });
+  checkExerciseComplete(exId);
+}
+function addSetRow(exId){
+  if(!logData[exId]) return;
+  const ex = EX_DB[exId];
+  const lastSet = logData[exId][logData[exId].length-1];
+  logData[exId].push({kg:lastSet.kg, reps:lastSet.reps, done:false});
+  const container = document.getElementById('sets-'+exId);
+  const newIdx = logData[exId].length - 1;
+  container.insertAdjacentHTML('beforeend', buildSetRowHtml(exId, newIdx, lastSet.kg, lastSet.reps, ex.bw, ex.time));
+}
+function checkExerciseComplete(exId){
+  const allDone = logData[exId].every(s => s.done);
+  const checks = DB.get('today_checks_'+TODAY+'_'+currentDay) || {};
+  if(allDone){
+    checks[exId] = true;
+    document.getElementById('ex-'+exId).classList.add('done');
+    document.getElementById('ec-'+exId).textContent = '✓';
+  }else{
+    delete checks[exId];
+    document.getElementById('ex-'+exId).classList.remove('done');
+    document.getElementById('ec-'+exId).textContent = '';
+  }
+  DB.set('today_checks_'+TODAY+'_'+currentDay, checks);
+  updateProgress();
+  document.getElementById('save-btn').classList.toggle('visible', Object.keys(checks).length > 0);
+}
+function updateProgress(){
+  const checks = DB.get('today_checks_'+TODAY+'_'+currentDay) || {};
+  const total = Object.keys(EX_DB).filter(id => EX_DB[id].cat === currentDay).length;
+  const done = Object.keys(checks).length;
+  const pct = total ? (done/total*100) : 0;
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-txt').textContent = done + '/' + total;
+}
+function getProgressionHint(exId){
+  const log = (DB.get('sessions') || []).filter(s => s.exercises && s.exercises[exId]).slice(-3);
+  if(log.length < 2) return null;
+  const ex = EX_DB[exId];
+  const last = log[log.length-1].exercises[exId];
+  const prev2 = log[log.length-2].exercises[exId];
+  const lastComplete = last.every(s => s.done);
+  const prev2Complete = prev2.every(s => s.done);
+  const prev = DB.get('prev_weights') || {};
+  const curKg = prev[exId] != null ? prev[exId] : ex.kg;
+  if(lastComplete && prev2Complete){
+    if(!ex.bw) return {type:'up', text:`↑ Klaar voor progressie: probeer ${fmtKg(curKg+0.5)} kg vandaag.`};
+    if(ex.time) return {type:'up', text:`↑ Stabiel — voeg 5-10 seconden toe vandaag.`};
+    return {type:'up', text:`↑ Stabiel — voeg 1 rep per set toe vandaag.`};
+  }
+  return null;
+}
+function saveSession(){
+  if(!currentDay) return;
+  const exDoneToday = {};
+  Object.entries(logData).forEach(([exId, sets])=>{
+    const doneSets = sets.filter(s => s.done || (s.kg > 0 && s.reps > 0));
+    if(doneSets.length > 0){
+      exDoneToday[exId] = doneSets.map(s => ({kg:roundKg(s.kg), reps:parseInt(s.reps)||0, done:s.done}));
+    }
+  });
+  if(Object.keys(exDoneToday).length === 0){toast('Niks gelogd — markeer eerst sets als ✓');return;}
+  const prev = DB.get('prev_weights') || {};
+  Object.entries(exDoneToday).forEach(([exId, sets])=>{
+    const maxKg = Math.max(...sets.filter(s => s.kg > 0).map(s => s.kg), 0);
+    if(maxKg > 0) prev[exId] = roundKg(maxKg);
+  });
+  DB.set('prev_weights', prev);
+  const sessions = DB.get('sessions') || [];
+  sessions.push({date:TODAY, day:currentDay, exercises:exDoneToday, ts:Date.now()});
+  DB.set('sessions', sessions);
+  DB.del('today_checks_'+TODAY+'_'+currentDay);
+  toast('Sessie opgeslagen ✓ Goed werk!');
+  setTimeout(()=>selectTab('today'), 1200);
+}
+
+// ═══════════════════════════════════════════
+// TRAINING MODE
+// ═══════════════════════════════════════════
+let tmState = {
+  active: false, day: null, steps: [], stepIdx: 0,
+  log: {}, restInterval: null, restLeft: 0
+};
+
+function tmStart(){
+  const day = getNextSessionDay();
+  tmState.day = day;
+  const exIds = Object.keys(EX_DB).filter(id => EX_DB[id].cat === day);
+  tmState.steps = [
+    {type:'warmup'},
+    ...exIds.map(exId => ({type:'ex', exId})),
+    {type:'cooldown'}
+  ];
+  tmState.stepIdx = 0;
+  tmState.log = {};
+  const prev = DB.get('prev_weights') || {};
+  const feels = DB.get('feels') || {};
+  const tired = feels[TODAY] === 1;
+  exIds.forEach(exId => {
+    const ex = EX_DB[exId];
+    let kg = prev[exId] != null ? prev[exId] : ex.kg;
+    if(tired && !ex.bw) kg = roundKg(Math.max(ex.kg * 0.85, kg * 0.85));
+    tmState.log[exId] = Array.from({length:ex.sets}, () => ({
+      kg, reps: parseInt(ex.reps) || 10, done: false
+    }));
+  });
+  tmState.active = true;
+  document.getElementById('tm-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  tmRender();
+}
+
+function tmRender(){
+  const step = tmState.steps[tmState.stepIdx];
+  const total = tmState.steps.length;
+  const pct = ((tmState.stepIdx + 1) / total) * 100;
+  document.getElementById('tm-progress-fill').style.width = pct + '%';
+  document.getElementById('tm-step-indicator').textContent = `Stap ${tmState.stepIdx + 1} van ${total} · ${DAY_LABELS[tmState.day]}`;
+
+  const content = document.getElementById('tm-content');
+  if(step.type === 'warmup'){
+    content.innerHTML = tmRenderWarmup();
+  }else if(step.type === 'cooldown'){
+    content.innerHTML = tmRenderCooldown();
+  }else if(step.type === 'ex'){
+    content.innerHTML = tmRenderExercise(step.exId);
+  }
+  content.scrollTop = 0;
+
+  const isLast = tmState.stepIdx === total - 1;
+  document.getElementById('tm-next-btn').textContent = isLast ? 'Sessie afronden ✓' : 'Volgende ›';
+  document.getElementById('tm-prev-btn').disabled = (tmState.stepIdx === 0);
+}
+
+function tmRenderWarmup(){
+  return `
+    <div class="tm-ex-name">Warming-up</div>
+    <div class="tm-ex-meta">~2-3 min · bereid je lichaam voor</div>
+    ${WARMUP_MOVES.map((m,i)=>`
+      <div class="tm-wu-item">
+        <div class="tm-wu-num">${i+1}</div>
+        <div class="tm-wu-body">
+          <div class="tm-wu-title">${m.title}</div>
+          <div class="tm-wu-desc">${m.desc}</div>
+        </div>
+        <div class="tm-wu-dur">${m.dur}</div>
+      </div>
+    `).join('')}
+    <div class="tm-tech-card">Doel: bloed laten stromen, gewrichten losmaken. Geen kracht-inspanning hier. Ga door zodra je voelt dat je lichaam wakker is.</div>
+  `;
+}
+
+function tmRenderCooldown(){
+  return `
+    <div class="tm-ex-name">Cool-down</div>
+    <div class="tm-ex-meta">~2 min · herstel begint hier</div>
+    ${COOLDOWN_MOVES.map((m,i)=>`
+      <div class="tm-wu-item">
+        <div class="tm-wu-num">${i+1}</div>
+        <div class="tm-wu-body">
+          <div class="tm-wu-title">${m.title}</div>
+          <div class="tm-wu-desc">${m.desc}</div>
+        </div>
+        <div class="tm-wu-dur">${m.dur}</div>
+      </div>
+    `).join('')}
+    <div class="tm-tech-card">Niet doorforceren. Voel een lichte rek, geen pijn. Adem rustig door tijdens de stretch — niet inhouden.</div>
+  `;
+}
+
+function tmRenderExercise(exId){
+  const ex = EX_DB[exId];
+  const sets = tmState.log[exId];
+  let html = `
+    <div class="tm-ex-name">${ex.name}</div>
+    <div class="tm-ex-meta">${ex.sets}×${ex.reps}${ex.time?' (tijd)':''} · ${ex.muscle}</div>
+    <div class="tm-tech-card">${ex.note}</div>
+  `;
+  if(tmState.restLeft > 0){
+    html += `
+      <div class="tm-rest-timer">
+        <div class="tm-rest-countdown" id="tm-rest-countdown">${tmState.restLeft}s</div>
+        <div class="tm-rest-label">Rust</div>
+        <button class="tm-rest-skip" onclick="tmSkipRest()">Sla over</button>
+      </div>
+    `;
+  }
+  sets.forEach((set, idx) => {
+    html += `
+      <div class="tm-set-card ${set.done?'done':''}">
+        <div class="tm-set-num">Set ${idx+1}</div>
+        <div class="tm-set-inputs">
+          ${!ex.bw ? `
+            <div class="tm-set-input-group">
+              <div class="tm-set-label">${ex.time?'Sec':'Kg'}</div>
+              <input class="tm-set-input" type="number" step="0.5" id="tm-kg-${exId}-${idx}" value="${fmtKg(set.kg)}" onchange="tmUpdateSet('${exId}',${idx},'kg',this.value)">
+            </div>
+          ` : ''}
+          <div class="tm-set-input-group">
+            <div class="tm-set-label">${ex.time?'Sec':'Reps'}</div>
+            <input class="tm-set-input" type="number" id="tm-reps-${exId}-${idx}" value="${set.reps}" onchange="tmUpdateSet('${exId}',${idx},'reps',this.value)">
+          </div>
+        </div>
+        <button class="tm-set-done-btn ${set.done?'done':''}" onclick="tmSetDone('${exId}',${idx})">${set.done?'Gedaan ✓':'Markeer als gedaan'}</button>
+      </div>
+    `;
+  });
+  return html;
+}
+
+function tmUpdateSet(exId, idx, field, val){
+  tmState.log[exId][idx][field] = parseFloat(val) || 0;
+}
+
+function tmSetDone(exId, idx){
+  const set = tmState.log[exId][idx];
+  // Capture latest input values before toggling
+  const kgInput = document.getElementById(`tm-kg-${exId}-${idx}`);
+  const repsInput = document.getElementById(`tm-reps-${exId}-${idx}`);
+  if(kgInput) set.kg = parseFloat(kgInput.value) || 0;
+  if(repsInput) set.reps = parseInt(repsInput.value) || 0;
+  set.done = !set.done;
+  tmRender();
+  if(set.done){
+    // Start rest timer (last set of last exercise = no timer)
+    const isLastSet = idx === tmState.log[exId].length - 1;
+    const lastExIdx = tmState.steps.length - 2; // -1 is cooldown
+    const isLastEx = tmState.stepIdx === lastExIdx;
+    if(!(isLastSet && isLastEx)){
+      tmStartRest(90);
+    }
+  }
+}
+
+function tmStartRest(seconds){
+  if(tmState.restInterval) clearInterval(tmState.restInterval);
+  tmState.restLeft = seconds;
+  tmRender();
+  tmState.restInterval = setInterval(()=>{
+    tmState.restLeft--;
+    const el = document.getElementById('tm-rest-countdown');
+    if(el) el.textContent = tmState.restLeft + 's';
+    if(tmState.restLeft <= 0){
+      clearInterval(tmState.restInterval);
+      tmState.restInterval = null;
+      tmState.restLeft = 0;
+      tmRender();
+      try{if(navigator.vibrate) navigator.vibrate(200);}catch{}
+    }
+  }, 1000);
+}
+
+function tmSkipRest(){
+  if(tmState.restInterval) clearInterval(tmState.restInterval);
+  tmState.restInterval = null;
+  tmState.restLeft = 0;
+  tmRender();
+}
+
+function tmNext(){
+  if(tmState.stepIdx === tmState.steps.length - 1){
+    tmFinish();
+  }else{
+    if(tmState.restInterval){clearInterval(tmState.restInterval); tmState.restInterval = null; tmState.restLeft = 0;}
+    tmState.stepIdx++;
+    tmRender();
+  }
+}
+
+function tmPrev(){
+  if(tmState.stepIdx > 0){
+    if(tmState.restInterval){clearInterval(tmState.restInterval); tmState.restInterval = null; tmState.restLeft = 0;}
+    tmState.stepIdx--;
+    tmRender();
+  }
+}
+
+function tmClose(){
+  if(!confirm('Sessie afbreken? Voortgang wordt NIET opgeslagen.')) return;
+  if(tmState.restInterval) clearInterval(tmState.restInterval);
+  tmState.active = false;
+  tmState.restInterval = null;
+  tmState.restLeft = 0;
+  document.getElementById('tm-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function tmFinish(){
+  // Save the session
+  const exDoneToday = {};
+  Object.entries(tmState.log).forEach(([exId, sets])=>{
+    const doneSets = sets.filter(s => s.done);
+    if(doneSets.length > 0){
+      exDoneToday[exId] = doneSets.map(s => ({kg:roundKg(s.kg), reps:parseInt(s.reps)||0, done:true}));
+    }
+  });
+  if(Object.keys(exDoneToday).length === 0){
+    if(!confirm('Niks gelogd in deze sessie. Toch afsluiten?')) return;
+    tmState.active = false;
+    document.getElementById('tm-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+    return;
+  }
+  const prev = DB.get('prev_weights') || {};
+  Object.entries(exDoneToday).forEach(([exId, sets])=>{
+    const maxKg = Math.max(...sets.filter(s => s.kg > 0).map(s => s.kg), 0);
+    if(maxKg > 0) prev[exId] = roundKg(maxKg);
+  });
+  DB.set('prev_weights', prev);
+  const sessions = DB.get('sessions') || [];
+  sessions.push({date:TODAY, day:tmState.day, exercises:exDoneToday, ts:Date.now()});
+  DB.set('sessions', sessions);
+  tmState.active = false;
+  document.getElementById('tm-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+  toast('Sessie opgeslagen ✓ Goed gedaan!');
+  selectTab('today');
+}
+
+// ═══════════════════════════════════════════
+// PROGRESS TAB
+// ═══════════════════════════════════════════
+function selectProgTab(tab){
+  progTab = tab;
+  document.querySelectorAll('.prog-tab').forEach(b=>b.classList.toggle('active', b.dataset.ptab===tab));
+  document.querySelectorAll('.ptab-content').forEach(el=>el.style.display='none');
+  document.getElementById('ptab-'+tab).style.display = 'block';
+  if(tab==='kracht') buildKracht();
+  if(tab==='lichaam') buildLichaam();
+  if(tab==='historie') buildHistorie();
+}
+function buildProgress(){selectProgTab(progTab);}
+function buildKracht(){
+  const container = document.getElementById('ptab-kracht');
+  const sessions = DB.get('sessions') || [];
+  const prev = DB.get('prev_weights') || {};
+  if(sessions.length === 0){
+    container.innerHTML = '<div class="empty"><div class="empty-title">Nog geen sessies</div>Log je eerste training om hier progressie te zien.</div>';
+    return;
+  }
+  const history = {};
+  sessions.forEach(s => {
+    Object.entries(s.exercises || {}).forEach(([exId, sets])=>{
+      if(!history[exId]) history[exId] = [];
+      const maxKg = Math.max(...sets.map(st => st.kg || 0));
+      const doneSets = sets.filter(st => st.done || st.kg > 0).length;
+      const avgReps = Math.round(sets.reduce((a,st)=>a+(parseInt(st.reps)||0),0)/sets.length);
+      history[exId].push({date:s.date, kg:maxKg, sets:doneSets, reps:avgReps});
+    });
+  });
+  const sorted = Object.keys(history).sort((a,b)=>{
+    const la = history[a][history[a].length-1].date;
+    const lb = history[b][history[b].length-1].date;
+    return lb.localeCompare(la);
+  });
+  container.innerHTML = '';
+  sorted.forEach(exId => {
+    const ex = EX_DB[exId];
+    if(!ex) return;
+    const h = history[exId];
+    const curKg = prev[exId] != null ? prev[exId] : ex.kg;
+    const prKg = Math.max(...h.map(p=>p.kg));
+    const startKg = h[0].kg;
+    const gain = +(curKg - startKg).toFixed(1);
+    const totalSets = h.reduce((a,p)=>a+p.sets, 0);
+    const card = document.createElement('div');
+    card.className = 'ex-prog-card';
+    card.innerHTML = `
+      <div class="ep-header">
+        <div>
+          <div class="ep-name">${ex.name}</div>
+          <div class="ep-session">${ex.cat.toUpperCase()} · ${ex.muscle}</div>
+        </div>
+        ${!ex.bw && prKg > 0 ? `<div class="ep-pr">${fmtKg(prKg)} kg PR</div>` : ''}
+      </div>
+      <div class="ep-chart"><canvas id="chart-${exId}"></canvas></div>
+      <div class="ep-stats">
+        <div class="ep-stat"><div class="ep-sv">${ex.bw?'BW':fmtKg(curKg)+' kg'}</div><div class="ep-sl">Huidig</div></div>
+        <div class="ep-stat"><div class="ep-sv" style="color:${gain>0?'var(--amber)':gain<0?'var(--red)':'var(--t2)'}">${gain>0?'+'+gain:gain!==0?gain:'—'}</div><div class="ep-sl">Vooruit (kg)</div></div>
+        <div class="ep-stat"><div class="ep-sv">${totalSets || '—'}</div><div class="ep-sl">Totaal sets</div></div>
+      </div>
+    `;
+    container.appendChild(card);
+    requestAnimationFrame(()=>drawChart('chart-'+exId, h, ex.bw));
+  });
+}
+function drawChart(canvasId, history, isBw){
+  const canvas = document.getElementById(canvasId);
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const data = isBw ? history.map(h=>h.reps||0) : history.map(h=>h.kg||0);
+  const labels = history.map(h => nlDate(h.date));
+  new Chart(ctx, {
+    type:'line',
+    data:{labels, datasets:[{
+      data, borderColor:'#0a0a0a', backgroundColor:'rgba(234,88,12,0.08)',
+      borderWidth:1.5, tension:0.2, fill:true, pointRadius:2,
+      pointBackgroundColor:(c)=>{const m=Math.max(...data);return data[c.dataIndex]===m?'#ea580c':'rgba(0,0,0,0.5)';}
+    }]},
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{enabled:true,intersect:false,mode:'index',displayColors:false,backgroundColor:'#ffffff',titleColor:'#737373',bodyColor:'#0a0a0a',borderColor:'#e5e7eb',borderWidth:1,padding:8,titleFont:{size:10,family:'DM Mono'},bodyFont:{size:11,family:'DM Mono'}}},
+      scales:{x:{display:false},y:{display:false,beginAtZero:false}}
+    }
+  });
+}
+function buildLichaam(){
+  const container = document.getElementById('ptab-lichaam');
+  const weights = DB.get('weights') || [];
+  let html = `
+    <div class="body-card">
+      <div class="card-sub" style="margin-bottom:10px;">Lichaamsgewicht loggen</div>
+      <div class="bw-input-row">
+        <input class="bw-input" id="bw-input" type="number" step="0.1" placeholder="kg">
+        <button class="bw-save" onclick="saveWeight()">Opslaan</button>
+      </div>
+    </div>
+  `;
+  if(weights.length > 0){
+    const latest = weights[weights.length-1];
+    const first = weights[0];
+    const diff = +(latest.kg - first.kg).toFixed(1);
+    html += `
+      <div class="body-card">
+        <div class="card-sub" style="margin-bottom:8px;">Voortgang</div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;">
+          <div>
+            <div style="font-size:32px;font-family:'Instrument Serif',serif;color:var(--t1);line-height:1;">${latest.kg.toFixed(1)} kg</div>
+            <div style="font-size:10px;color:var(--t3);margin-top:4px;letter-spacing:0.08em;text-transform:uppercase;">${nlDate(latest.date)}</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:16px;color:${diff>0?'var(--amber)':diff<0?'var(--green)':'var(--t2)'};">${diff>0?'+':''}${diff} kg</div>
+            <div style="font-size:9px;color:var(--t3);margin-top:2px;letter-spacing:0.08em;text-transform:uppercase;">Sinds start</div>
+          </div>
+        </div>
+        <div style="height:60px;margin-top:14px;"><canvas id="bw-chart"></canvas></div>
+      </div>
+      <div class="body-card">
+        <div class="card-sub" style="margin-bottom:8px;">Historie</div>
+        ${weights.slice(-10).reverse().map(w=>`<div style="display:flex;justify-content:space-between;font-size:11px;padding:5px 0;color:var(--t2);"><span>${nlDate(w.date)}</span><span style="color:var(--t1);">${w.kg.toFixed(1)} kg</span></div>`).join('')}
+      </div>
+    `;
+  }else{
+    html += '<div class="empty">Log je gewicht regelmatig om groei te zien.</div>';
+  }
+  container.innerHTML = html;
+  if(weights.length >= 2){
+    requestAnimationFrame(()=>{
+      const ctx = document.getElementById('bw-chart').getContext('2d');
+      new Chart(ctx, {
+        type:'line',
+        data:{labels:weights.map(w=>nlDate(w.date)), datasets:[{data:weights.map(w=>w.kg), borderColor:'#ea580c', backgroundColor:'rgba(234,88,12,0.1)', borderWidth:1.5, tension:0.3, fill:true, pointRadius:0}]},
+        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{enabled:true,backgroundColor:'#ffffff',titleColor:'#737373',bodyColor:'#0a0a0a',borderColor:'#e5e7eb',borderWidth:1,padding:8,titleFont:{size:10,family:'DM Mono'},bodyFont:{size:11,family:'DM Mono'}}},scales:{x:{display:false},y:{display:false,beginAtZero:false}}}
+      });
+    });
+  }
+}
+function saveWeight(){
+  const v = parseFloat(document.getElementById('bw-input').value);
+  if(!v || v < 20 || v > 200){toast('Vul een geldig gewicht in (kg)');return;}
+  const weights = DB.get('weights') || [];
+  const idx = weights.findIndex(w => w.date === TODAY);
+  if(idx >= 0) weights[idx] = {date:TODAY, kg:v};
+  else weights.push({date:TODAY, kg:v});
+  weights.sort((a,b)=>a.date.localeCompare(b.date));
+  DB.set('weights', weights);
+  toast('Gewicht opgeslagen ✓');
+  buildLichaam();
+}
+function buildHistorie(){
+  const container = document.getElementById('ptab-historie');
+  const sessions = (DB.get('sessions') || []).slice().reverse();
+  if(sessions.length === 0){
+    container.innerHTML = '<div class="empty"><div class="empty-title">Geen historie</div>Sessies verschijnen hier zodra je trainingen logt.</div>';
+    return;
+  }
+  container.innerHTML = sessions.slice(0,10).map(s=>{
+    const exRows = Object.entries(s.exercises || {}).map(([exId, sets])=>{
+      const ex = EX_DB[exId];
+      if(!ex) return '';
+      const maxKg = Math.max(...sets.map(st=>st.kg||0));
+      const totalReps = sets.reduce((a,st)=>a+(parseInt(st.reps)||0),0);
+      const doneCount = sets.filter(st=>st.done).length;
+      return `<div class="hc-ex-row"><span class="hc-ex-name">${ex.name}</span><span class="hc-ex-data">${doneCount}×${Math.round(totalReps/sets.length)} · ${ex.bw?'BW':fmtKg(maxKg)+' kg'}</span></div>`;
+    }).join('');
+    return `<div class="hist-card">
+      <div class="hc-top">
+        <div class="hc-date">${safeDate(s.date).toLocaleDateString('nl-NL',{weekday:'short',day:'numeric',month:'long'})}</div>
+        <div class="hc-day-tag ${s.day}">${DAY_LABELS[s.day]}</div>
+      </div>
+      <div style="margin-top:8px;">${exRows}</div>
+    </div>`;
+  }).join('');
+}
+
+// ═══════════════════════════════════════════
+// SETTINGS
+// ═══════════════════════════════════════════
+function openSettings(){document.getElementById('settings-modal').classList.add('open');}
+function closeSettings(){document.getElementById('settings-modal').classList.remove('open');}
+
+function exportData(){
+  const sessions = DB.get('sessions') || [];
+  const weights = DB.get('weights') || [];
+  const prev = DB.get('prev_weights') || {};
+  let text = '═══ FORGE EXPORT ═══\n';
+  text += 'Datum: ' + new Date().toLocaleString('nl-NL') + '\n\n';
+  text += '── Huidige gewichten ──\n';
+  Object.entries(prev).forEach(([exId, kg])=>{
+    const ex = EX_DB[exId];
+    if(ex) text += (ex.name + ': ').padEnd(34) + fmtKg(kg) + ' kg\n';
+  });
+  text += '\n── Lichaamsgewicht ──\n';
+  weights.slice(-10).forEach(w => {text += nlDate(w.date) + ': ' + w.kg.toFixed(1) + ' kg\n';});
+  text += '\n── Laatste 10 sessies ──\n';
+  sessions.slice(-10).reverse().forEach(s => {
+    text += '\n' + nlDate(s.date) + ' · ' + DAY_LABELS[s.day] + '\n';
+    Object.entries(s.exercises || {}).forEach(([exId, sets])=>{
+      const ex = EX_DB[exId];
+      if(!ex) return;
+      const maxKg = Math.max(...sets.map(st=>st.kg||0));
+      text += '  ' + ex.name + ' — ' + sets.length + ' sets';
+      if(!ex.bw) text += ' @ ' + fmtKg(maxKg) + ' kg';
+      text += '\n';
+    });
+  });
+  navigator.clipboard?.writeText(text).then(()=>toast('Export gekopieerd ✓')).catch(()=>alert(text));
+  closeSettings();
+}
+
+function backupToFile(){
+  const data = {};
+  Object.keys(localStorage).filter(k=>k.startsWith('forge_')).forEach(k=>{
+    try{data[k] = JSON.parse(localStorage.getItem(k));}catch{data[k] = localStorage.getItem(k);}
+  });
+  const payload = {
+    version: '1.2',
+    exportedAt: new Date().toISOString(),
+    data: data
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'forge-backup-' + TODAY + '.json';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  toast('Backup opgeslagen ✓');
+  closeSettings();
+}
+
+function restoreFromFile(input){
+  const file = input.files[0];
+  if(!file) return;
+  if(!confirm('Bestaande data wordt overschreven met de inhoud van de backup. Doorgaan?')){
+    input.value = '';
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = e => {
+    try{
+      const payload = JSON.parse(e.target.result);
+      if(!payload.data) throw new Error('Geen geldige backup');
+      // Clear existing forge_ keys
+      Object.keys(localStorage).filter(k=>k.startsWith('forge_')).forEach(k=>localStorage.removeItem(k));
+      // Restore
+      Object.entries(payload.data).forEach(([k,v])=>{
+        localStorage.setItem(k, JSON.stringify(v));
+      });
+      toast('Backup teruggezet ✓');
+      closeSettings();
+      setTimeout(()=>location.reload(), 1000);
+    }catch(err){
+      alert('Kon backup niet lezen: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+  input.value = '';
+}
+
+function showResetConfirm(){
+  if(confirm('Weet je het zeker? Alle sessies, gewichten en historie worden gewist. Dit kan niet ongedaan worden.')){
+    Object.keys(localStorage).filter(k=>k.startsWith('forge_')).forEach(k=>localStorage.removeItem(k));
+    toast('Data gewist.');
+    closeSettings();
+    setTimeout(()=>location.reload(), 800);
+  }
+}
+
+// ═══════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════
+function init(){buildToday();}
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
